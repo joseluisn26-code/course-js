@@ -11,28 +11,60 @@
 <body>
     <script>
         function countCaracter(car) {
-            (typeof car === "string") ? console.log(`The number of characters are ${car.length}`) :
+            (typeof car === "string") ? console.log(`The number of characters are ${car.length}`):
                 console.log(`Please enter a text string `);
         }
 
         function cutCaracter(car, n) {
-            (typeof car === "string") ? console.log(`${car.slice(0,n)}`) :
+            (typeof car === "string") ? console.log(`${car.slice(0,n)}`):
                 console.log(`Please enter a text string`);
         }
 
         function separateCaracter(car, n) {
-           return (typeof car === "string") ? console.log(`${car.split(n)}`) :
+            return (typeof car === "string") ? console.log(`${car.split(n)}`) :
                 console.log(`Please enter a text string`);
         }
 
         function repeatText(text, n) {
-           return (typeof text === "string") ? console.log(`${text.repeat(n)}`) :
+            return (typeof text === "string") ? console.log(`${text.repeat(n)}`) :
                 console.log(`Please enter a text string`);
         }
+
+        function reverseText(car) {
+            return (typeof car === "string") ? console.log(`${car.split("").reverse().join("")}`) :
+                console.log(`Please enter a text string`);
+        }
+
+        function wordCount(car, carWanted) {
+            let count = 0,
+                pos = 0;
+            while ((pos = car.indexOf(carWanted, pos)) !== -1) {
+                count++;
+                pos += carWanted.length;
+            }
+            return count;
+        }
+
+        function palindrome(str) {
+            let re = /[\W_]/g;
+            let lowRegStr = str.toLowerCase().replace(re, '');
+            let reverseStr = lowRegStr.split('').reverse().join('');
+            return reverseStr === lowRegStr;
+        }
+
+        function removeCaracter(cadena, patron) {
+            let resultado = cadena.split(patron).join(""); 
+            console.log(resultado);
+        }
+
         countCaracter("ellaera");
-        cutCaracter("hipopotamo",5);
-        separateCaracter('hola que tal',' ');
-        repeatText("Hola como estas ",5);
+        cutCaracter("hipopotamo", 5);
+        separateCaracter('hola que tal', ' ');
+        repeatText("Hola como estas ", 5);
+        reverseText("Hola como estas");
+        console.log(wordCount("hola que hace hola hola hola y poruqe me dices hola", "hola"));
+        console.log(palindrome("salas"));
+        removeCaracter("xyz1, xyz2, xyz3, xyz4, xyz5", "xyz");
     </script>
 </body>
 
