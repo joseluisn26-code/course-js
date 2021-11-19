@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started With Javascript</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        const first = 'this is a string';
+        const second = String ('this is a string');
+        console.log('this is my string'.toUpperCase());
+        console.log(String('this is my string').toUpperCase());
+        console.log(first === second);
+        console.groupCollapsed('Primitives vs Objects');
+            console.log(first === second);
+            console.log(
+                typeof first,
+                typeof String('This is a string'),
+                typeof new String()
+            );
+        console.groupEnd();
+
+        //strings
+        const sentece = 'this is my sentence'
+        console.groupCollapsed('String')
+            console.log(first.toUpperCase());
+            console.log(second.toLowerCase())
+            console.log(sentece.startsWith('this is'))
+            console.log('*'.repeat(10))
+            console.log('look at me goo       '.trim())
+        console.groupEnd();
+
+        //numers and math
+        console.groupCollapsed('Numbers and Math')
+            console.log(1.0.toString());
+            console.log((1).toString());
+            console.log(Number.isInteger(5));
+            console.log(Number.isInteger(5.43));
+            console.log((1.562342).toFixed(2));
+            console.log(
+                Math.random().toFixed(2),
+                Math.ceil(1.56),
+                Math.floor(6.3)
+            )
+        console.groupEnd();
+            
+        //arrays
+        const myArr = ['chris', 'nick', 'holly '];
+        console.group('Arrays')
+            console.log(myArr.length)
+            console.log(myArr.join('-'))
+            console.log(myArr.push('ado'), myArr)
+            console.log(myArr.pop('ado'), myArr)
+            console.log(myArr.pop(), myArr)
+
+            myArr.forEach(function(user){
+                console.log(user);
+            });
+
+            myArr.forEach((user) => console.log(user));
+        console.groupEnd();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started With Javascript</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron text-centar">
+        <button type="button" class="btn btn-danger" onclick="saySomething('This is the first button')">
+            my Button
+        </button>
+        <button type="button" class="btn btn-danger" onclick="saySomething('This is the second button')">
+            my 2th Button
+        </button>
+    </div>
+
+    <script>
+        function saySomething(message = 'googbye', whisper = false) {
+            if (whisper) {
+                console.log(`%c${message}`, 'font-size: 5px');
+            } else {
+                console.log(message);
+            }
+        }
+
+        saySomething('hello', false)
+        saySomething('My name is chris', true)
+        saySomething()
+
+        // function squared(a){
+        //     return Math.pow(a,2);
+        // }
+        // const newSquared = squared(3);
+        // console.log(newSquared);
+        // const squared = function (a)
+        const squared = (a) =>{
+            return Math.pow(a, 2);
+        }
+    </script>
+</body>
+
+</html>

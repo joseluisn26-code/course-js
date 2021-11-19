@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started With Javascript</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Option 1 -->
+    <div class="jumbotron text-center">
+        <button class="btn btn-danger" onclick="goCoocoo()">
+            Go Coocoo
+        </button>
+    </div>
+
+    <!-- Option 2 use events directly on the element in js -->
+    <div class="jumbotron text-center">
+        <button class="btn btn-danger coffee-btn" onclick="goCoocoo()">
+            Get Coffee
+        </button>
+        <button class="btn btn-danger coffee-btn" onclick="goCoocoo()">
+            Get Coffee
+        </button>
+        <button class="btn btn-danger coffee-btn" onclick="goCoocoo()">
+            Get Coffee
+        </button>
+    </div>
+
+    <!-- option 3 using addEventlistener -->
+    <div class="jumbotron text-center">
+        <button class="btn btn-primary lala-btn">
+            Not listening
+        </button>
+    </div>
+
+    <script>
+        // 1 grab elements from the dom
+        // 2 attach event listeners
+
+        // const body = document.querySelector('body');
+        // body.style.backgroundColor = '#C00C00';
+        function goCoocoo() {
+            document.body.style.backgroundColor = '#C00C00';
+        }
+
+        // // option 2
+        const coffeeButtons = document.querySelectorAll('.coffee-btn');
+        // const coffeeButton = document.querySelector('.coffee-btn');
+        // coffeeButton.onclick = function(){
+        //     document.body.style.backgroundColor = '#C0FFEE';
+        // }
+        // coffeeButton.onmouseenter = goCoocoo;
+
+        function getCoffee() {
+            document.body.style.backgroundColor = '#C0FFEE';
+        }
+
+        coffeeButtons.forEach(function (button) {
+            button.onclick = getCoffee;
+        });
+
+        // option 3
+        const lalaButton = document.querySelector('.lala-btn');
+
+        function notListening() {
+            document.body.style.backgroundColor = '#1A1A1A';
+        }
+
+        lalaButton.addEventListener('click', notListening);
+        lalaButton.addEventListener('mouseenter', goCoocoo);
+
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => button.addEventListener('mouseleave', notListening));
+    </script>
+</body>
+
+</html>
