@@ -128,6 +128,103 @@
 
         }
 
+        const aplicateDiscount = (amount = undefined,discount =0) =>{
+            if (amount === undefined) return console.warn("you did not enter the amount");
+            if (typeof amount !== "number") return console.error(`The value ${numero} entered is not a number`);
+            if (amount === 0) return console.error("the amount cannot be zero");
+            if (typeof discount !== "number") return console.error(`The valus ${grades} enter, is not a number`);
+            if (Math.sign(discount)=== -1) return console.error("the descount cannot be negative");
+
+            return console.info(`${amount} -${discount}% = $${amount- ((amount*discount)/100)}`)
+        }
+
+        const calculateYears = (fecha = undefined) =>{
+            if(fecha === undefined) return console.warn("you did not enter a date");
+            if(!(fecha instanceof Date)) return console.error("the value you entered is not a date");
+
+            let todayLessDate = new Date().getTime() - fecha.getTime(),
+            yearsEnMs = 1000 * 60 * 60 * 24 * 365,
+            humanYears =Math.floor(todayLessDate/yearsEnMs);
+
+            return (Math.sign(humanYears) === -1)
+            ? console.info(`Missing ${Math.abs(humanYears)} years to go until the ${fecha.getFullYear()}.`)
+            : (Math.sign(humanYears) === 1)
+            ? console.info(`it has been ${humanYears} years, since ${fecha.getFullYear()}.`)
+            : console.info(`We are in the current year ${fecha.getFullYear()}`)
+        }
+
+        const validateEmail = (email = "") =>{
+            if(!email) return console.warn("you did not enter an email");
+            if(typeof email !== "string") return console.error(`The value ${email} enter, is not a text string`);
+
+            let expReg =/[a-z0-9]+(\.[a-z0-9]+)*@[a-z0-9]+(\.[a-z0-9]+)*(\.[a-z0-9]{2,15})/i.test(email);
+            return (expReg) ? console.info(`"${email}",is a valid email`)
+            :  console.warn(`"${email}",Not is a valid email`)
+        }
+
+        const arrayMinMax = (arr = undefined) =>{
+            if(arr === undefined) return console.warn("you did not a array of numbers");
+            if(!(arr instanceof Array)) return console.error("The value you entered is not an array");
+            if(arr.length === 0) return console.error("The array is empty");
+
+            for(let num of arr){
+                if(typeof num !== "number") return console.error(`the value ${num} enter is not a number`);
+            }
+            return console.info(`Array original: ${arr}\ngreat value:${Math.max(...arr)},\nsmaller value:${Math.min(...arr)}`);
+        }
+
+        const sortArray = (arr = undefined) =>{
+            if(arr === undefined) return console.warn("you did not a array of numbers");
+            if(!(arr instanceof Array)) return console.error("The value you entered is not an array");
+            if(arr.length === 0) return console.error("The array is empty");
+
+            for(let num of arr){
+                if(typeof num !== "number") return console.error(`the value ${num} enter is not a number`);
+            }
+            return console.info({
+                arr,
+                asc: arr.map(el => el).sort(),
+                desc: arr.map(el => el).sort().reverse()
+            });
+        }
+
+        const removeDuplicate = (arr = undefined) =>{
+            if(arr === undefined) return console.warn("you did not a array of numbers");
+            if(!(arr instanceof Array)) return console.error("The value you entered is not an array");
+            if(arr.length === 0) return console.error("The array is empty");
+            if(arr.length === 1) return console.error("The array must have at least 2 elements");
+
+            // return console.info({
+            //     Original: arr,
+            //     noDuplicates: arr.filter((value,index,self) => self.indexOf(value) === index)
+            // });
+            return console.info({
+                original: arr,
+                noDuplicates: [... new Set(arr)]
+            });
+        }
+        // promedio
+        const average = (arr = undefined) =>{
+            if(arr === undefined) return console.warn("you did not a array of numbers");
+            if(!(arr instanceof Array)) return console.error("The value you entered is not an array");
+            if(arr.length === 0) return console.error("The array is empty");
+            
+            for(let num of arr){
+                if(typeof num !== "number") return console.error(`the value ${num} enter is not a number`);
+            }
+            
+            return console.info(
+               arr.reduce((total, num, index, arr) =>{
+                total +=num;
+                if(index === arr.length-1){
+                    return `The average of ${arr.join(" + ")} is ${total / arr.length}`;
+                }else{
+                    return total;
+                }
+               })
+            );
+        }
+
         countCaracter("ellaera");
         cutCaracter("hipopotamo", 5);
         separateCaracter('hola que tal', ' ');
@@ -141,7 +238,18 @@
         console.log(factorialNumber(5));
         evenNumber(4);
         convertDegrees(100, "C");
-        convertDegrees(32, "F");
+        convertDegrees(100, "F");
+        aplicateDiscount(1000,25);
+
+        calculateYears();
+        calculateYears(new Date(1982,3,26));
+        calculateYears(new Date(1985,11,10));
+        validateEmail("jonovoan@poligran.edu.co");
+        arrayMinMax([1,5,9,17,0,58,-4]);
+        sortArray([4,6,1,3,9]);
+        removeDuplicate([2,3,2,5,"x","y","x"]);
+        average([1,2,3,4,5,6,7,8,9,0]);
+
     </script>
 </body>
 
