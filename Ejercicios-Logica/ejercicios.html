@@ -53,8 +53,79 @@
         }
 
         function removeCaracter(cadena, patron) {
-            let resultado = cadena.split(patron).join(""); 
+            let resultado = cadena.split(patron).join("");
             console.log(resultado);
+        }
+
+        function randomNumber() {
+            return Math.floor(Math.random() * (600 - 501)) + 501;
+        }
+
+        function factorialNumber(num) {
+            if (num < 0)
+                return -1;
+            else if (num == 0)
+                return 1;
+            else {
+                return (num * factorialNumber(num - 1));
+            }
+        }
+
+        function esPrimeNumber(num) {
+            if (num == 0 || num == 1 || num == 4) return false;
+            for (let i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+            };
+            return true;
+        }
+
+        const capicua = (numero = 0) => {
+            if (!numero) return console.warn("I do not enter a number");
+            if (typeof numero !== "number") return console.error(`The value ${numero} entered is not a number`);
+            numero = numero.toString();
+            let reverseNumber = numero.split("").reverse().join("");
+
+            return (numero === reverseNumber) ?
+                console.info(`if capicua, original number ${numero}, reverse number ${reverseNumber}`) :
+                console.info(`not capicua, original number ${numero}, reverse number ${reverseNumber}`)
+        }
+
+        const evenNumber = (numero = undefined) => {
+            if (numero === undefined) return console.warn("I do not enter a number");
+            if (typeof numero !== "number") return console.error(`The value ${numero} entered is not a number`);
+            if (numero === 0) return console.error("the number cannot be zero");
+            if (numero === 1) return console.error("the number cannot be one");
+            if (Math.sign(numero) === -1) return console.error("the number cannot be negative");
+
+            let divisible = false;
+
+            for (let i = 2; i < numero; i++) {
+                if ((numero % i) === 0) {
+                    divisible = true;
+                    break;
+                }
+            }
+            return (divisible) ? console.log(`The number ${numero} is not prime`) :
+                console.log(`The number ${numero} is prime`)
+        }
+
+        const convertDegrees = (grades = undefined, unity = undefined) => {
+            if (grades === undefined) return console.warn("you did not enter grades to convert");
+            if (typeof grades !== "number") return console.error(`The value ${numero} entered is not a number`);
+            if (unity === undefined) return console.error("you did not enter the type of grades to convert");
+            if (typeof unity !== "string") return console.error(`The valus ${grades} enter, is not a text string`);
+            if (unity.length !== 1 || !/(C|F)/.test(unity)) return console.warn("unrecognized unit value");
+
+            if (unity === "C") {
+                return console.info(`${grades}°C= ${Math.round((grades *(9/5)) +32)}°F`)
+            } else if (unity === "F") {
+                return console.info(`${grades}°F= ${Math.round((grades -32) *(5/9))}°C`)
+            } else {
+                return console.error("The type of grades to be converted is not valid")
+            }
+
         }
 
         countCaracter("ellaera");
@@ -64,7 +135,13 @@
         reverseText("Hola como estas");
         console.log(wordCount("hola que hace hola hola hola y poruqe me dices hola", "hola"));
         console.log(palindrome("salas"));
+        console.log(capicua(2002));
         removeCaracter("xyz1, xyz2, xyz3, xyz4, xyz5", "xyz");
+        console.log(randomNumber());
+        console.log(factorialNumber(5));
+        evenNumber(4);
+        convertDegrees(100, "C");
+        convertDegrees(32, "F");
     </script>
 </body>
 
